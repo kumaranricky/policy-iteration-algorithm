@@ -6,20 +6,13 @@ To develop a Python program to find the optimal policy for the given MDP using t
 ## PROBLEM STATEMENT
 The bandit slippery walk problem is a reinforcement learning problem in which an agent must learn to navigate a 7-state environment in order to reach a goal state. The environment is slippery, so the agent has a chance of moving in the opposite direction of the action it takes.
 
-### States
-
 The environment has 7 states:
 * Two Terminal States: **G**: The goal state & **H**: A hole state.
 * Five Transition states / Non-terminal States including  **S**: The starting state.
 
-### Actions
-
 The agent can take two actions:
-
 * R: Move right.
 * L: Move left.
-
-### Transition Probabilities
 
 The transition probabilities for each action are as follows:
 
@@ -29,16 +22,7 @@ The transition probabilities for each action are as follows:
 
 For example, if the agent is in state S and takes the "R" action, then there is a 50% chance that it will move to state 4, a 33.33% chance that it will stay in state S, and a 16.66% chance that it will move to state 2.
 
-### Rewards
-
 The agent receives a reward of +1 for reaching the goal state (G). The agent receives a reward of 0 for all other states.
-
-### Graphical Representation
-<p align="center">
-
-![graph](https://github.com/Prasannakumar019/policy-iteration-algorithm/assets/75235090/9d3ed6fa-210b-4955-8cde-a2eac310c203)
-
- </p>
 
 
 ## POLICY ITERATION ALGORITHM
@@ -81,13 +65,12 @@ def policy_improvement(V, P, gamma=0.9):
     return new_policy
 ```
 
-### POLICY ITERATION FUNCTION
+### <br><br>POLICY ITERATION FUNCTION
 ```py
 def policy_iteration(P, gamma=0.9, theta=1e-10):
     # Initialize a random policy by selecting random actions for each state
     random_actions = np.random.choice(tuple(P[0].keys()), len(P))
     pi = lambda s: {s: a for s, a in enumerate(random_actions)}[s]
-    
     while True:
         # Store the current policy for comparison
         old_pi = {s: pi(s) for s in range(len(P))}
@@ -107,7 +90,7 @@ def policy_iteration(P, gamma=0.9, theta=1e-10):
 ![Screenshot (574)](https://github.com/kumaranricky/policy-iteration-algorithm/assets/75243072/cfe49928-7d6f-41a1-93b5-e89ced9be51e)
 
 
-### Optimal Policy with Gamma = 0.90
+### <br><br>Optimal Policy with Gamma = 0.90
 ![Screenshot (575)](https://github.com/kumaranricky/policy-iteration-algorithm/assets/75243072/064d1285-8c93-47b2-96da-ea2b250f2c81)
 
 
